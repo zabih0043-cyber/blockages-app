@@ -49,6 +49,10 @@ export default function Assessment() {
   const [details, setDetails] = useState(initialState.details);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [step]);
+
+  useEffect(() => {
     const timeoutId = window.setTimeout(() => {
       saveState({ step, answers, details });
     }, 150);

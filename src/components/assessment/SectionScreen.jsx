@@ -28,7 +28,7 @@ export default function SectionScreen({
     >
       <div className="mb-6 text-center">
         <div className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-semibold mb-3">
-          Part {section.id} of 2
+          Part {section.id} of 6
         </div>
         <h2 className="text-2xl font-bold text-foreground mb-2">{section.title}</h2>
         <p className="text-sm text-muted-foreground max-w-lg mx-auto">
@@ -59,7 +59,7 @@ export default function SectionScreen({
           <ArrowLeft className="h-4 w-4" /> Previous
         </Button>
         <Button onClick={onNext} className="gap-2 px-6" disabled={!allAnswered}>
-          {sectionIndex < 1 ? "Next Section" : "Review Answers"}
+          {sectionIndex < 5 ? "Next Section" : "Review Answers"}
           <ArrowRight className="h-4 w-4" />
         </Button>
       </div>

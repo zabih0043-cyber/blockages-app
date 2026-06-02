@@ -1,248 +1,445 @@
+export const CATEGORIES = [
+  { id: 'mental',     label: 'Mental',     max: 12 },
+  { id: 'energy',     label: 'Energy',     max: 9  },
+  { id: 'behavioral', label: 'Behavioral', max: 12 },
+  { id: 'emotional',  label: 'Emotional',  max: 12 },
+  { id: 'direction',  label: 'Direction',  max: 9  },
+  { id: 'relational', label: 'Relational', max: 6  },
+];
+
 export const SECTIONS = [
   {
     id: 1,
-    title: "Your Starting Point",
-    description:
-      "Reflect on how you begin tasks, what you're currently experiencing, and how you handle mistakes and frustration.",
-    measures: ["Task initiation", "Current state", "Response to setbacks", "Primary frustration"],
+    category: 'mental',
+    title: 'Mental',
+    description: 'How you think, plan, and decide.',
   },
   {
     id: 2,
-    title: "Your Operating Style",
-    description:
-      "Consider how you approach goals, what your environment feels like, what you tend to avoid, and how you use unstructured time.",
-    measures: ["Goal approach", "Environment", "Avoidance patterns", "Unstructured time"],
+    category: 'energy',
+    title: 'Energy',
+    description: 'Your current vitality and capacity.',
+  },
+  {
+    id: 3,
+    category: 'behavioral',
+    title: 'Behavioral',
+    description: 'Your habits, routines, and follow-through.',
+  },
+  {
+    id: 4,
+    category: 'emotional',
+    title: 'Emotional',
+    description: 'How you handle feelings, fear, and mistakes.',
+  },
+  {
+    id: 5,
+    category: 'direction',
+    title: 'Direction',
+    description: 'Your clarity of goals and sense of progress.',
+  },
+  {
+    id: 6,
+    category: 'relational',
+    title: 'Relational',
+    description: 'Your environment and relationship with others\' opinions.',
   },
 ];
 
+// A = 0 (healthiest/unblocked), D = 3 (most blocked)
 export const QUESTIONS = [
+  // Mental (4)
   {
     id: 1,
     section: 1,
-    text: "When you need to begin an important task, what typically happens?",
+    category: 'mental',
+    text: 'When starting an important task:',
     options: [
-      { letter: "A", text: "I overanalyze and delay getting started" },
-      { letter: "B", text: "I feel fatigued or lack motivation" },
-      { letter: "C", text: "I become distracted by other activities" },
-      { letter: "D", text: "I feel anxious or uncertain" },
+      { letter: 'A', text: 'I begin and adjust as I go' },
+      { letter: 'B', text: 'I plan a little, then start' },
+      { letter: 'C', text: 'I over-plan before acting' },
+      { letter: 'D', text: 'I analyze endlessly and rarely start' },
     ],
   },
   {
     id: 2,
     section: 1,
-    text: "Which statement best reflects your current experience?",
+    category: 'mental',
+    text: 'Faced with a decision:',
     options: [
-      { letter: "A", text: "\"I'm unsure what the right next step is\"" },
-      { letter: "B", text: "\"I don't have the energy to follow through\"" },
-      { letter: "C", text: "\"I struggle to stay consistent\"" },
-      { letter: "D", text: "\"Something feels emotionally overwhelming\"" },
+      { letter: 'A', text: 'I decide and move on' },
+      { letter: 'B', text: 'I weigh it briefly' },
+      { letter: 'C', text: 'I go back and forth' },
+      { letter: 'D', text: 'I get stuck and avoid choosing' },
     ],
   },
   {
     id: 3,
     section: 1,
-    text: "How do you respond to mistakes or setbacks?",
+    category: 'mental',
+    text: 'About getting things "right":',
     options: [
-      { letter: "A", text: "I analyze them excessively" },
-      { letter: "B", text: "I avoid trying again" },
-      { letter: "C", text: "I move on quickly without much reflection" },
-      { letter: "D", text: "I take them personally" },
+      { letter: 'A', text: 'Good enough works for me' },
+      { letter: 'B', text: 'I aim high but ship' },
+      { letter: 'C', text: 'I polish too long' },
+      { letter: 'D', text: 'Nothing ever feels ready' },
     ],
   },
   {
     id: 4,
     section: 1,
-    text: "What is your primary frustration at the moment?",
+    category: 'mental',
+    text: 'My mind when I should focus:',
     options: [
-      { letter: "A", text: "Feeling stuck in my thoughts" },
-      { letter: "B", text: "Persistent fatigue or burnout" },
-      { letter: "C", text: "Lack of discipline or follow-through" },
-      { letter: "D", text: "Emotional instability or intensity" },
+      { letter: 'A', text: 'Clear' },
+      { letter: 'B', text: 'A little busy' },
+      { letter: 'C', text: 'Cluttered' },
+      { letter: 'D', text: 'Racing and noisy' },
     ],
   },
+
+  // Energy (3)
   {
     id: 5,
     section: 2,
-    text: "How do you typically approach goals?",
+    category: 'energy',
+    text: 'My energy through the day:',
     options: [
-      { letter: "A", text: "I plan extensively but delay taking action" },
-      { letter: "B", text: "I struggle to initiate" },
-      { letter: "C", text: "I start but rarely complete tasks" },
-      { letter: "D", text: "I feel conflicted or uncertain about direction" },
+      { letter: 'A', text: 'Steady' },
+      { letter: 'B', text: 'Dips sometimes' },
+      { letter: 'C', text: 'Often low' },
+      { letter: 'D', text: 'Drained most of the time' },
     ],
   },
   {
     id: 6,
     section: 2,
-    text: "How would you describe your current environment?",
+    category: 'energy',
+    text: 'After a normal day\'s work:',
     options: [
-      { letter: "A", text: "Mentally cluttered or overwhelming" },
-      { letter: "B", text: "Physically draining or disorganized" },
-      { letter: "C", text: "Filled with distractions" },
-      { letter: "D", text: "Emotionally tense or heavy" },
+      { letter: 'A', text: 'Still have energy' },
+      { letter: 'B', text: 'Tired but fine' },
+      { letter: 'C', text: 'Wiped out' },
+      { letter: 'D', text: 'Completely depleted' },
     ],
   },
   {
     id: 7,
     section: 2,
-    text: "What do you tend to avoid most?",
+    category: 'energy',
+    text: 'Pushing through tasks feels:',
     options: [
-      { letter: "A", text: "Making decisions" },
-      { letter: "B", text: "Effort that feels mentally or physically exhausting" },
-      { letter: "C", text: "Tedious or challenging tasks" },
-      { letter: "D", text: "Uncomfortable emotions" },
+      { letter: 'A', text: 'Doable' },
+      { letter: 'B', text: 'Takes effort' },
+      { letter: 'C', text: 'Hard to sustain' },
+      { letter: 'D', text: 'Impossible right now' },
+    ],
+  },
+
+  // Behavioral (4)
+  {
+    id: 8,
+    section: 3,
+    category: 'behavioral',
+    text: 'With routines:',
+    options: [
+      { letter: 'A', text: 'Consistent' },
+      { letter: 'B', text: 'Mostly stick to them' },
+      { letter: 'C', text: 'Start strong, fade' },
+      { letter: 'D', text: "Can't keep any" },
     ],
   },
   {
-    id: 8,
-    section: 2,
-    text: "If you had an entirely free day, how would it likely unfold?",
+    id: 9,
+    section: 3,
+    category: 'behavioral',
+    text: 'Distractions (phone, noise):',
     options: [
-      { letter: "A", text: "I would spend time thinking about what I should do" },
-      { letter: "B", text: "I would rest or remain inactive" },
-      { letter: "C", text: "I would unintentionally waste time" },
-      { letter: "D", text: "I would feel restless or uneasy" },
+      { letter: 'A', text: 'Rarely pull me' },
+      { letter: 'B', text: 'Sometimes' },
+      { letter: 'C', text: 'Often' },
+      { letter: 'D', text: 'Constantly derail me' },
+    ],
+  },
+  {
+    id: 10,
+    section: 3,
+    category: 'behavioral',
+    text: 'Finishing what I start:',
+    options: [
+      { letter: 'A', text: 'Almost always' },
+      { letter: 'B', text: 'Usually' },
+      { letter: 'C', text: 'Sometimes' },
+      { letter: 'D', text: 'Rarely' },
+    ],
+  },
+  {
+    id: 11,
+    section: 3,
+    category: 'behavioral',
+    text: 'A free hour to be productive:',
+    options: [
+      { letter: 'A', text: 'I use it well' },
+      { letter: 'B', text: 'Mostly' },
+      { letter: 'C', text: 'Drift a bit' },
+      { letter: 'D', text: 'Waste it without meaning to' },
+    ],
+  },
+
+  // Emotional (4)
+  {
+    id: 12,
+    section: 4,
+    category: 'emotional',
+    text: 'After a mistake:',
+    options: [
+      { letter: 'A', text: 'Learn and move on' },
+      { letter: 'B', text: 'Sting, then recover' },
+      { letter: 'C', text: 'Dwell on it' },
+      { letter: 'D', text: 'Take it deeply personally' },
+    ],
+  },
+  {
+    id: 13,
+    section: 4,
+    category: 'emotional',
+    text: 'Uncomfortable feelings:',
+    options: [
+      { letter: 'A', text: 'I face them' },
+      { letter: 'B', text: 'Usually handle them' },
+      { letter: 'C', text: 'I avoid them' },
+      { letter: 'D', text: 'I numb or escape them' },
+    ],
+  },
+  {
+    id: 14,
+    section: 4,
+    category: 'emotional',
+    text: 'Trying something risky:',
+    options: [
+      { letter: 'A', text: 'I go for it' },
+      { letter: 'B', text: 'Cautious but willing' },
+      { letter: 'C', text: 'Hesitant' },
+      { letter: 'D', text: 'Fear stops me' },
+    ],
+  },
+  {
+    id: 15,
+    section: 4,
+    category: 'emotional',
+    text: 'Emotional weight lately:',
+    options: [
+      { letter: 'A', text: 'Light' },
+      { letter: 'B', text: 'Manageable' },
+      { letter: 'C', text: 'Heavy' },
+      { letter: 'D', text: 'Overwhelming' },
+    ],
+  },
+
+  // Direction (3)
+  {
+    id: 16,
+    section: 5,
+    category: 'direction',
+    text: 'Knowing what I want:',
+    options: [
+      { letter: 'A', text: 'Very clear' },
+      { letter: 'B', text: 'Mostly' },
+      { letter: 'C', text: 'Fuzzy' },
+      { letter: 'D', text: 'No idea' },
+    ],
+  },
+  {
+    id: 17,
+    section: 5,
+    category: 'direction',
+    text: 'My goals right now:',
+    options: [
+      { letter: 'A', text: 'Defined and active' },
+      { letter: 'B', text: 'Loosely set' },
+      { letter: 'C', text: 'Vague' },
+      { letter: 'D', text: 'None' },
+    ],
+  },
+  {
+    id: 18,
+    section: 5,
+    category: 'direction',
+    text: 'Sense of progress:',
+    options: [
+      { letter: 'A', text: 'Moving forward' },
+      { letter: 'B', text: 'Slow but going' },
+      { letter: 'C', text: 'Stuck' },
+      { letter: 'D', text: 'Lost' },
+    ],
+  },
+
+  // Relational (2)
+  {
+    id: 19,
+    section: 6,
+    category: 'relational',
+    text: 'My environment / people:',
+    options: [
+      { letter: 'A', text: 'Supportive' },
+      { letter: 'B', text: 'Mostly fine' },
+      { letter: 'C', text: 'Draining at times' },
+      { letter: 'D', text: 'Toxic or isolating' },
+    ],
+  },
+  {
+    id: 20,
+    section: 6,
+    category: 'relational',
+    text: "Others' opinions of me:",
+    options: [
+      { letter: 'A', text: "Don't run my choices" },
+      { letter: 'B', text: 'Minor pull' },
+      { letter: 'C', text: 'Often sway me' },
+      { letter: 'D', text: 'Control what I do' },
     ],
   },
 ];
 
-export const BLOCKAGE_TYPES = {
-  A: {
-    letter: "A",
-    name: "The Overthinker",
-    type: "Mental Blockage",
-    tagline: "You live in your head.",
-    description:
-      "You analyze, question, and replay scenarios — but action gets delayed. Your blockage isn't lack of ability, it's mental friction.",
-    corePattern: "\"I need to be sure before I start.\"",
-    whatHappening: [
-      "Fear of failure disguised as planning",
-      "Perfectionism slowing momentum",
-      "Decision fatigue from excessive analysis",
-    ],
-    shifts: [
-      "Act before you feel ready",
-      "Limit decision-making time to 5 minutes",
-      "Use the 5-minute rule: start for just 5 minutes",
-      "Take small, imperfect actions consistently",
+export const CATEGORY_DATA = {
+  mental: {
+    label: 'Mental',
+    subtitle: 'Overthinking & Perfectionism',
+    color: 'blue',
+    diagnosis: 'Thinking has become a substitute for doing. You see every angle, which makes starting and finishing hard.',
+    actions: [
+      'Set a timer: decide in 10 minutes, then commit.',
+      'Ship at 80% — treat "good enough" as the goal, not a compromise.',
+      'Take one small imperfect action before planning the next.',
     ],
   },
-  B: {
-    letter: "B",
-    name: "The Drained One",
-    type: "Energy Blockage",
-    tagline: "You're running on empty.",
-    description:
-      "This isn't laziness — it's depletion. Your body and mind don't have the resources to push forward consistently.",
-    corePattern: "\"I just don't have the energy.\"",
-    whatHappening: [
-      "Burnout or poor recovery cycles",
-      "Too much output, not enough input",
-      "Exhaustion mistaken for lack of motivation",
-    ],
-    shifts: [
-      "Restore before you push forward",
-      "Prioritise sleep, movement, and nutrition",
-      "Start smaller than you think necessary",
-      "Reduce workload before adding more",
+  energy: {
+    label: 'Energy',
+    subtitle: 'Burnout & Fatigue',
+    color: 'amber',
+    diagnosis: "Your tank is low. This isn't laziness; it's depletion, and pushing harder makes it worse.",
+    actions: [
+      "Protect sleep first — it's the lever everything else depends on.",
+      'Cut or delegate one recurring drain this week.',
+      'Add light daily movement (a 10-min walk) to rebuild, don\'t grind.',
     ],
   },
-  C: {
-    letter: "C",
-    name: "The Inconsistent Starter",
-    type: "Behavioral Blockage",
-    tagline: "You can begin — staying consistent is the challenge.",
-    description:
-      "You have the ability to act, but consistency is lacking. This typically reflects weak systems rather than a weak character.",
-    corePattern: "\"I struggle to stay consistent.\"",
-    whatHappening: [
-      "Weak routines or lack of structure",
-      "Distraction replacing focused effort",
-      "Starting without completing cycles",
-    ],
-    shifts: [
-      "Build structured daily routines",
-      "Minimise distractions in your environment",
-      "Focus on completing small tasks fully",
-      "Track your follow-through habits weekly",
+  behavioral: {
+    label: 'Behavioral',
+    subtitle: 'Habits & Discipline',
+    color: 'emerald',
+    diagnosis: "You can act — consistency is the gap. This is weak systems, not weak character.",
+    actions: [
+      'Anchor one keystone habit to a fixed time daily.',
+      'Remove the top distraction from reach (not willpower — friction).',
+      'Finish small: pick tasks you can complete to rebuild momentum.',
     ],
   },
-  D: {
-    letter: "D",
-    name: "The Protector",
-    type: "Emotional Blockage",
-    tagline: "You avoid emotional discomfort.",
-    description:
-      "You're not weak — you're guarded. Your system is trying to protect you from overwhelm, rejection, or pain.",
-    corePattern: "\"This feels like too much.\"",
-    whatHappening: [
-      "Unprocessed emotions blocking clarity",
-      "Avoidance replacing action",
-      "Internal conflict creating paralysis",
+  emotional: {
+    label: 'Emotional',
+    subtitle: 'Internal Weight & Avoidance',
+    color: 'violet',
+    diagnosis: "Something underneath is steering you — fear, old pain, or feelings you're avoiding.",
+    actions: [
+      'Name the feeling out loud or on paper before acting.',
+      "Approach one thing you've been avoiding, in the smallest possible step.",
+      'If the weight stays heavy, talk to someone you trust or a professional.',
     ],
-    shifts: [
-      "Feel first, then act",
-      "Express instead of suppress",
-      "Journal, talk, or release emotions safely",
-      "Identify and acknowledge emotions clearly",
+  },
+  direction: {
+    label: 'Direction',
+    subtitle: 'Clarity & Purpose',
+    color: 'indigo',
+    diagnosis: "The engine works, but there's no destination set. Effort without direction feels like drifting.",
+    actions: [
+      'Write one clear goal for the next 90 days — just one.',
+      'Define what "progress" looks like this week, concretely.',
+      'Block 30 minutes to ask: what do I actually want here?',
+    ],
+  },
+  relational: {
+    label: 'Relational',
+    subtitle: 'Environment & Approval',
+    color: 'rose',
+    diagnosis: "Your blockage may be outside you — draining people, a heavy environment, or living for others' approval.",
+    actions: [
+      'Identify the one relationship or space costing you the most.',
+      'Practice one small "no" this week without over-explaining.',
+      'Seek one source of genuine support or accountability.',
     ],
   },
 };
 
-export const MIXED_TYPES = {
-  "A+B": {
-    title: "Paralysis + Depletion",
-    description:
-      "Overthinking consumes the limited energy you have. Simplify decisions and protect your energy — choose fewer, more focused actions.",
-  },
-  "A+C": {
-    title: "Overthinking + Procrastination",
-    description:
-      "Excessive analysis leads you to delay, and when you do start, consistency is hard to maintain. Break the cycle by committing to small, imperfect actions on a fixed schedule.",
-  },
-  "A+D": {
-    title: "Fear-Driven Hesitation",
-    description:
-      "Mental overthinking and emotional avoidance create a powerful paralysis. Start by acknowledging the feeling, then take one small action regardless.",
-  },
-  "B+C": {
-    title: "Low Energy + Inconsistency",
-    description:
-      "Depleted energy makes it hard to build consistent habits. Focus on restoration first — better energy is the foundation for better behavior.",
-  },
-  "B+D": {
-    title: "Emotional Burnout",
-    description:
-      "Emotional strain is draining your energy. Rest and emotional processing work together — address both, not just one.",
-  },
-  "C+D": {
-    title: "Emotional Weight + Behavioral Drift",
-    description:
-      "Unresolved emotions make it hard to build consistent habits. Small, reliable routines can provide the emotional grounding you need.",
-  },
-};
+export const SEVERITY_BANDS = [
+  { min: 0,  max: 25,  label: 'Largely Unblocked', color: '#22c55e' },
+  { min: 26, max: 50,  label: 'Mild',              color: '#eab308' },
+  { min: 51, max: 75,  label: 'Moderate',          color: '#f97316' },
+  { min: 76, max: 100, label: 'High',              color: '#ef4444' },
+];
+
+const LETTER_SCORE = { A: 0, B: 1, C: 2, D: 3 };
 
 export function calculateResults(answers) {
-  const counts = { A: 0, B: 0, C: 0, D: 0 };
-  Object.values(answers).forEach((letter) => {
-    if (counts[letter] !== undefined) counts[letter]++;
+  // Raw score per category
+  const categoryScores = {};
+  CATEGORIES.forEach((cat) => {
+    const qs = QUESTIONS.filter((q) => q.category === cat.id);
+    const score = qs.reduce((sum, q) => {
+      const letter = answers[q.id];
+      return sum + (letter !== undefined ? LETTER_SCORE[letter] : 0);
+    }, 0);
+    categoryScores[cat.id] = score;
   });
 
-  const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-  const primary = sorted[0][0];
-  const secondary = sorted[1][0];
-  const primaryCount = sorted[0][1];
-  const secondaryCount = sorted[1][1];
+  // Total severity score (sum / 60 × 100)
+  const totalScore = Object.values(answers).reduce(
+    (sum, letter) => sum + (LETTER_SCORE[letter] ?? 0),
+    0
+  );
+  const severityScore = Math.round((totalScore / 60) * 100);
+  const severityBand = SEVERITY_BANDS.find(
+    (b) => severityScore >= b.min && severityScore <= b.max
+  ) ?? SEVERITY_BANDS[0];
 
-  const isMixed = primaryCount - secondaryCount <= 1 && secondaryCount >= 2;
-  const mixedKey = isMixed ? [primary, secondary].sort().join("+") : null;
+  // Raw % per category (score / max)
+  const rawPercents = {};
+  CATEGORIES.forEach((cat) => {
+    rawPercents[cat.id] = (categoryScores[cat.id] / cat.max) * 100;
+  });
+
+  // Normalize to sum to 100
+  const rawSum = Object.values(rawPercents).reduce((s, v) => s + v, 0);
+  const normalizedPercents = {};
+  if (rawSum === 0) {
+    CATEGORIES.forEach((cat) => {
+      normalizedPercents[cat.id] = Math.round(100 / CATEGORIES.length);
+    });
+  } else {
+    CATEGORIES.forEach((cat) => {
+      normalizedPercents[cat.id] = Math.round((rawPercents[cat.id] / rawSum) * 100);
+    });
+    // Fix rounding drift
+    const pctSum = Object.values(normalizedPercents).reduce((s, v) => s + v, 0);
+    if (pctSum !== 100) {
+      const topCat = Object.entries(normalizedPercents).sort((a, b) => b[1] - a[1])[0][0];
+      normalizedPercents[topCat] += 100 - pctSum;
+    }
+  }
+
+  // Rank categories by normalized %
+  const ranked = Object.entries(normalizedPercents)
+    .sort((a, b) => b[1] - a[1])
+    .map(([id, pct]) => ({ id, pct }));
 
   return {
-    counts,
-    primary,
-    secondary: isMixed ? secondary : null,
-    isMixed,
-    mixedKey,
+    categoryScores,
+    normalizedPercents,
+    ranked,
+    totalScore,
+    severityScore,
+    severityBand,
+    primaryCategory: ranked[0].id,
+    secondaryCategory: ranked[1].id,
     totalAnswered: Object.keys(answers).length,
   };
 }

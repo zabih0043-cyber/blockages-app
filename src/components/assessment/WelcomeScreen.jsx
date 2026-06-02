@@ -46,21 +46,21 @@ export default function WelcomeScreen({ onStart }) {
           <Clock className="h-5 w-5 text-primary flex-shrink-0" />
           <div className="text-left">
             <p className="text-xs text-muted-foreground">Duration</p>
-            <p className="text-sm font-semibold">3–5 mins</p>
+            <p className="text-sm font-semibold">5–8 mins</p>
           </div>
         </div>
         <div className="flex items-center gap-3 bg-card rounded-xl border border-border p-4">
           <Target className="h-5 w-5 text-primary flex-shrink-0" />
           <div className="text-left">
             <p className="text-xs text-muted-foreground">Questions</p>
-            <p className="text-sm font-semibold">8 questions</p>
+            <p className="text-sm font-semibold">20 questions</p>
           </div>
         </div>
         <div className="flex items-center gap-3 bg-card rounded-xl border border-border p-4">
           <Layers className="h-5 w-5 text-primary flex-shrink-0" />
           <div className="text-left">
             <p className="text-xs text-muted-foreground">Format</p>
-            <p className="text-sm font-semibold">2 parts</p>
+            <p className="text-sm font-semibold">6 areas</p>
           </div>
         </div>
       </motion.div>

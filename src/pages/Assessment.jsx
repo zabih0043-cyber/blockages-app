@@ -77,7 +77,7 @@ export default function Assessment() {
   return (
     <div className="min-h-screen bg-background">
       <main className="max-w-4xl mx-auto py-8 sm:py-12">
-        {step > 0 && step < 6 && (
+        {step > 0 && step < 9 && (
           <div className="px-4 mb-8">
             <div className="mb-6 flex justify-start">
               <img
@@ -110,7 +110,7 @@ export default function Assessment() {
               }}
             />
           )}
-          {step >= 2 && step <= 3 && (
+          {step >= 2 && step <= 7 && (
             <SectionScreen
               sectionIndex={step - 2}
               answers={answers}
@@ -127,23 +127,23 @@ export default function Assessment() {
               }}
             />
           )}
-          {step === 4 && (
+          {step === 8 && (
             <ReviewScreen
               answers={answers}
               onSubmit={() => {
                 startTransition(() => {
-                  setStep(5);
+                  setStep(9);
                 });
               }}
               onBack={() => {
                 startTransition(() => {
-                  setStep(3);
+                  setStep(7);
                 });
               }}
               onGoToSection={goToSection}
             />
           )}
-          {step === 5 && (
+          {step === 9 && (
             <ResultsScreen
               answers={answers}
               details={details}

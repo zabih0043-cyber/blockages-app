@@ -3,7 +3,6 @@ import { ArrowRight, CheckCircle2, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CATEGORIES, CATEGORY_DATA, calculateResults } from "../../lib/assessmentData";
-import RadarChartSection from "./RadarChartSection";
 import ScoreGauge from "./ScoreGauge";
 
 // Tailwind color maps per category
@@ -91,19 +90,7 @@ export default function ResultsScreen({ answers, details, onRestart }) {
         </motion.div>
       )}
 
-      {/* 1 — Radar chart */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.35 }}
-        className="bg-card rounded-2xl border border-border p-6 shadow-sm mb-5"
-      >
-        <h3 className="text-sm font-bold text-foreground mb-1 text-center">Blockage Shape</h3>
-        <p className="text-xs text-muted-foreground text-center mb-4">Normalized % across all 6 areas</p>
-        <RadarChartSection normalizedPercents={normalizedPercents} />
-      </motion.div>
-
-      {/* 2 — Ranked horizontal bars */}
+      {/* Ranked horizontal bars */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

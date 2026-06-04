@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, RotateCcw } from "lucide-react";
+import { ArrowRight, Brain, CheckCircle2, Compass, Heart, RotateCcw, Target, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CATEGORIES, CATEGORY_DATA, calculateResults } from "../../lib/assessmentData";
@@ -15,7 +15,7 @@ const CAT_COLORS = {
   relational: { bar: 'bg-rose-500',    barBg: 'bg-rose-100 dark:bg-rose-900/30',    text: 'text-rose-600 dark:text-rose-400',    badge: 'bg-rose-100 text-rose-700 dark:bg-rose-900/60 dark:text-rose-300',    card: 'bg-rose-50 dark:bg-rose-950/30 border-rose-200 dark:border-rose-800' },
 };
 
-const CAT_EMOJI = { mental: '🧠', energy: '⚡', behavioral: '🎯', emotional: '💚', direction: '🧭', relational: '🤝' };
+const CAT_ICONS = { mental: Brain, energy: Zap, behavioral: Target, emotional: Heart, direction: Compass, relational: Users };
 
 function CalloutCard({ categoryId, rank, delay }) {
   const data = CATEGORY_DATA[categoryId];
@@ -30,7 +30,7 @@ function CalloutCard({ categoryId, rank, delay }) {
       className={cn('rounded-2xl border p-5 sm:p-6', c.card)}
     >
       <div className="flex items-center gap-2 mb-3">
-        <span className="text-xl">{CAT_EMOJI[categoryId]}</span>
+        {(() => { const Icon = CAT_ICONS[categoryId]; return <Icon className={cn('h-4 w-4 flex-shrink-0', c.text)} />; })()}
         <span className={cn('text-xs font-bold px-2 py-0.5 rounded-full', c.badge)}>{rank}</span>
         <span className={cn('text-sm font-bold', c.text)}>{data.label}</span>
         <span className="text-xs text-muted-foreground">— {data.subtitle}</span>
@@ -106,7 +106,7 @@ export default function ResultsScreen({ answers, details, onRestart }) {
               <div key={id}>
                 <div className="flex items-center justify-between text-xs mb-1">
                   <span className={cn('font-semibold flex items-center gap-1.5', c.text)}>
-                    <span>{CAT_EMOJI[id]}</span>
+                    {(() => { const Icon = CAT_ICONS[id]; return <Icon className="h-3.5 w-3.5 flex-shrink-0" />; })()}
                     {data.label}
                     {i === 0 && (
                       <span className="text-[10px] font-bold opacity-70 ml-1">(Primary)</span>
